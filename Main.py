@@ -1,4 +1,5 @@
-from RelevantAreas.Marking.MarkingRectangular import MarkingRectangular
+#from RelevantAreas.Marking.MarkingRectangular import MarkingRectangular
+from RelevantAreas.RelevantAreas import RelevantAreas
 import cv2
 import numpy as np
 
@@ -36,17 +37,18 @@ def click_and_crop(event, x, y, flags, param):
 cap = cv2.VideoCapture(0)
 cv2.namedWindow("Trackbars", cv2.WINDOW_NORMAL)
 
-cv2.createTrackbar("L - H", "Trackbars", 141, 255, nothing)
-cv2.createTrackbar("L - S", "Trackbars", 108, 255, nothing)
-cv2.createTrackbar("L - V", "Trackbars", 0, 255, nothing)
-cv2.createTrackbar("U - H", "Trackbars", 255, 255, nothing)
+cv2.createTrackbar("L - H", "Trackbars", 0, 255, nothing)
+cv2.createTrackbar("L - S", "Trackbars", 91, 255, nothing)
+cv2.createTrackbar("L - V", "Trackbars", 117, 255, nothing)
+cv2.createTrackbar("U - H", "Trackbars", 84, 255, nothing)
 cv2.createTrackbar("U - S", "Trackbars", 255, 255, nothing)
-cv2.createTrackbar("U - V", "Trackbars", 255, 255, nothing)
-cv2.createTrackbar("larger area", "Trackbars", 4233, 6000, nothing)
-cv2.createTrackbar("smaller area", "Trackbars", 1209, 6000, nothing)
+cv2.createTrackbar("U - V", "Trackbars", 229, 255, nothing)
+cv2.createTrackbar("larger area", "Trackbars", 6000, 6000, nothing)
+cv2.createTrackbar("smaller area", "Trackbars", 207, 6000, nothing)
 
 #--------- MarkingRectangular--------
-MarkingRectangular01 = MarkingRectangular((255, 0, 0))
+#MarkingRectangular01 = MarkingRectangular((255, 0, 0))
+relevantAreas = RelevantAreas();
 
 while True:
     #--------- Fonte de imagens ---------
@@ -89,7 +91,8 @@ while True:
     maskYellow = cv2.dilate(maskYellow, None, iterations=2)
 
     #dibujar(maskYellow, (255, 0, 0))
-    MarkingRectangular01.Marking(maskYellow, frame, largerArea, smallerArea)
+    #MarkingRectangular01.Marking(maskYellow, frame, largerArea, smallerArea)
+    relevantAreas.Marking(maskYellow, frame, largerArea, smallerArea)
 
     #cntYellow = cv2.findContours(maskYellow.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[-2]
     #centerYellow = None
