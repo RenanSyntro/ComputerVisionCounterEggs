@@ -8,7 +8,7 @@ class MarkingRectangular:
     def __init__(self, color):
         self.color = color
 
-    def Marking(self, frame, box, x, y ,elementsContors):
+    def Marking(self, frame, elementsContors):
         '''
         contornos,_ = cv2.findContours(mask, cv2.RETR_EXTERNAL,
             cv2.CHAIN_APPROX_SIMPLE)

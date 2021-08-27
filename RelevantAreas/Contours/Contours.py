@@ -16,7 +16,7 @@ class Contours:
         self.y = 0
         self.contoursList = []
 
-    def Marking(self, mask, frame, largerArea, smallerArea):
+    def Marking(self, mask, largerArea, smallerArea):
         '''
         contornos,_ = cv2.findContours(mask, cv2.RETR_EXTERNAL,
             cv2.CHAIN_APPROX_SIMPLE)
@@ -33,7 +33,7 @@ class Contours:
                     boxYellow = cv2.boxPoints(rectYellow)
                     boxYellow = np.int0(boxYellow)
                     self.box = boxYellow
-                    
+
                     MYellow = cv2.moments(c)  # cYellow
                     self.x = int(MYellow["m10"] / MYellow["m00"])
                     self.y = int(MYellow["m01"] / MYellow["m00"])

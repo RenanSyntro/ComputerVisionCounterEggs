@@ -9,6 +9,6 @@ class RelevantAreas:
         pass
 
     def Marking(self, maskYellow, frame, largerArea, smallerArea):
-        contours.Marking(maskYellow, frame, largerArea, smallerArea)
-        markingRectangular.Marking(frame, contours.box, contours.x, contours.y, contours.contoursList)
+        contours.Marking(maskYellow, largerArea, smallerArea)
+        markingRectangular.Marking(frame, contours.contoursList)
 
